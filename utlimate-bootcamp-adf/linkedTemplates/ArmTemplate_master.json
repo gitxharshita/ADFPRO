@@ -1,0 +1,139 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "utlimate-bootcamp-adf"
+		},
+		"databasels_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'databasels'"
+		},
+		"linkedserviceDL_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedserviceDL'"
+		},
+		"databasels_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adfproserverbootcamp.database.windows.net"
+		},
+		"databasels_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adfprodb"
+		},
+		"databasels_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "harshitaadmin"
+		},
+		"linkedserviceDL_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sparkadlsstorage.dfs.core.windows.net/"
+		},
+		"linkes_git_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com"
+		},
+		"ls_REST_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"managerTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage"
+		},
+		"mantrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage"
+		},
+		"newmantrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "utlimate-bootcamp-adf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"databasels_password": {
+						"value": "[parameters('databasels_password')]"
+					},
+					"linkedserviceDL_accountKey": {
+						"value": "[parameters('linkedserviceDL_accountKey')]"
+					},
+					"databasels_properties_typeProperties_server": {
+						"value": "[parameters('databasels_properties_typeProperties_server')]"
+					},
+					"databasels_properties_typeProperties_database": {
+						"value": "[parameters('databasels_properties_typeProperties_database')]"
+					},
+					"databasels_properties_typeProperties_userName": {
+						"value": "[parameters('databasels_properties_typeProperties_userName')]"
+					},
+					"linkedserviceDL_properties_typeProperties_url": {
+						"value": "[parameters('linkedserviceDL_properties_typeProperties_url')]"
+					},
+					"linkes_git_properties_typeProperties_url": {
+						"value": "[parameters('linkes_git_properties_typeProperties_url')]"
+					},
+					"ls_REST_properties_typeProperties_url": {
+						"value": "[parameters('ls_REST_properties_typeProperties_url')]"
+					},
+					"managerTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('managerTrigger_properties_typeProperties_scope')]"
+					},
+					"mantrigger_properties_typeProperties_scope": {
+						"value": "[parameters('mantrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "utlimate-bootcamp-adf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"newmantrigger_properties_typeProperties_scope": {
+						"value": "[parameters('newmantrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'utlimate-bootcamp-adf_ArmTemplate_0')]"
+			]
+		}
+	]
+}

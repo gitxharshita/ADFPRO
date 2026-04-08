@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "utlimate-bootcamp-adf"
+		},
+		"databasels_password": {
+			"value": ""
+		},
+		"linkedserviceDL_accountKey": {
+			"value": ""
+		},
+		"databasels_properties_typeProperties_server": {
+			"value": "adfproserverbootcamp.database.windows.net"
+		},
+		"databasels_properties_typeProperties_database": {
+			"value": "adfprodb"
+		},
+		"databasels_properties_typeProperties_userName": {
+			"value": "harshitaadmin"
+		},
+		"linkedserviceDL_properties_typeProperties_url": {
+			"value": "https://sparkadlsstorage.dfs.core.windows.net/"
+		},
+		"linkes_git_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com"
+		},
+		"ls_REST_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"managerTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage"
+		},
+		"mantrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage"
+		},
+		"newmantrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
