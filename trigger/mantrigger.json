@@ -1,0 +1,17 @@
+{
+	"name": "mantrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_1.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/e4d2814e-42a5-4274-9e2c-ed21a3f0798c/resourceGroups/spark-bootcamp-rg/providers/Microsoft.Storage/storageAccounts/sparkadlsstorage",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

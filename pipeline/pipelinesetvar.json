@@ -1,0 +1,72 @@
+{
+	"name": "pipelinesetvar",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Metadatads",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Store files",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var_files",
+					"value": {
+						"value": "@activity('Get Metadata').output.childitems",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"var_files": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Bootcamp1"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-04-07T09:10:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

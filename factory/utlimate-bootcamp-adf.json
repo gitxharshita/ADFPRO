@@ -1,0 +1,9 @@
+{
+	"name": "utlimate-bootcamp-adf",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5451f9f7-eaf8-42c2-9771-d3a0db4b2604",
+		"tenantId": "7dadf527-2b67-432a-be48-c1962f73f4a5"
+	}
+}
